@@ -3,7 +3,7 @@
 
         Public function get_pedidos(){
             $conectar= parent::conexion();
-            parent::set_names_();
+            parent::set_names();
             $sql="SELECT * FROM ma_pedidos";
             $sql=$conectar->prepare($sql);
             $sql->execute();
