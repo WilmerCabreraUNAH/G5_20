@@ -4,7 +4,7 @@
         Public function get_pedidos(){
             $conectar= parent::conexion();
             parent::set_names_();
-            $sql="SELECT * FROM ma_pedidos WHERE ESTADO = 1";
+            $sql="SELECT * FROM ma_pedidos";
             $sql=$conectar->prepare($sql);
             $sql->execute();
             return $resultado=$sql->fetchAll(PDO::FETCH_ASSOC);            
@@ -12,7 +12,8 @@
         
         public function get_pedidos($ID){
             $conectar= parent::conexion();
-            $sql="SELECT * FROM ma_pedidos WHERE ESTADO=1 AND ID= ?";
+            parent::set_names();
+            $sql="SELECT * FROM ma_pedidos WHERE ID = ?";
             $sql=$conectar-> prepare($sql);
             $sql->bindValue(1, $ID);
             $sql->execute();
