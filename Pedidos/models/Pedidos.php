@@ -13,7 +13,7 @@
         public function get_pedido($ID){
             $Conectar=parent::Conexion();
             parent::set_names();
-            $sql="SELECT * FROM ma_pedidos WHERE ESTADO=1 AND ID = ?";
+            $sql="SELECT * FROM ma_pedidos WHERE ESTADO='F' AND ID = ?";
             $sql=$Conectar->prepare($sql); 
             $sql->bindValue(1, $ID); 
             $sql->execute();
