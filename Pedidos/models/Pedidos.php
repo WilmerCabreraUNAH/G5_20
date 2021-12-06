@@ -2,23 +2,23 @@
     class Pedidos extends Conectar{
 
         Public function get_pedidos(){
-            $conectar= parent::conexion();
+            $Conectar=parent::Conexion();
             parent::set_names();
-            $sql="SELECT * FROM ma_pedidos";
-            $sql=$conectar->prepare($sql);
-            $sql->execute();
-            return $resultado=$sql->fetchAll(PDO::FETCH_ASSOC);            
-        }
-        
-        public function get_pedidos($ID){
-            $conectar= parent::conexion();
-            parent::set_names();
-            $sql="SELECT * FROM ma_pedidos WHERE ID = ?";
-            $sql=$conectar-> prepare($sql);
-            $sql->bindValue(1, $ID);
+            $sql="SELECT * FROM ma_pedidos WHERE Estado= 'F'";
+            $sql=$Conectar->prepare($sql);
             $sql->execute();
             return $resultado=$sql->fetchAll(PDO::FETCH_ASSOC);
         }
+        
+        public function get_pedido($ID){
+            $Conectar=parent::Conexion();
+            parent::set_names();
+            $sql="SELECT * FROM ma_pedidos WHERE ESTADO=1 AND ID = ?";
+            $sql=$Conectar->prepare($sql); 
+            $sql->bindValue(1, $ID); 
+            $sql->execute();
+            return $resultado=$sql->fetchAll(PDO::FETCH_ASSOC);
+       }
 
         public function insert_pedidos($ID_SOCIO,$FECHA_PEDIDO,$DETALLE,$SUB_TOTAL,$TOTAL_ISV,$TOTAL,$FECHA_ENTEGA,$ESTADO)
         {   $conectar= parent::Conexion();
