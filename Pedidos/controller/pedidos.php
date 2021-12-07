@@ -28,7 +28,6 @@
         case "GetUno":
             $datos=$pedidos->get_pedido($body["ID"]);
             echo json_encode($datos);  
-
         break;
 
         case "InsertPedidos":
